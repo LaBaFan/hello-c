@@ -1,6 +1,6 @@
 title: VS Code 安装指南
 description: 从下载到第一次打开项目，macOS、Windows 与 Linux 的 VS Code 安装教程。
-url: https://labafan.github.io
+url: https://www.labafan.cc
 baseurl: /vscode-install-guide
 markdown: kramdown
 defaults:
@@ -8,4 +8,6 @@ defaults:
       path: ""
     values:
       layout: default
+      nav: true
+      order: 1000
 exclude: [README.md]

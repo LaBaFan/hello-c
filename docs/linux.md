@@ -1,5 +1,8 @@
 ---
 title: Linux 安装教程
+nav_title: Linux
+description: Ubuntu / Debian 与其他发行版
+order: 3
 ---
 <p class="eyebrow">03 / LINUX</p>
 

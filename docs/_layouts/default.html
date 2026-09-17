@@ -14,11 +14,12 @@
   <div class="shell">
     <aside><p class="nav-label">开始使用</p><nav aria-label="教程导航">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>概览</a>
-      <a href="{{ '/macos.html' | relative_url }}" {% if page.url == '/macos.html' %}aria-current="page"{% endif %}>01 <span>macOS</span></a>
-      <a href="{{ '/windows.html' | relative_url }}" {% if page.url == '/windows.html' %}aria-current="page"{% endif %}>02 <span>Windows</span></a>
-      <a href="{{ '/linux.html' | relative_url }}" {% if page.url == '/linux.html' %}aria-current="page"{% endif %}>03 <span>Linux</span></a>
+      {% assign documents = site.pages | where: "nav", true | sort: "order" %}
+      {% for document in documents %}
+      <a href="{{ document.url | relative_url }}" {% if page.url == document.url %}aria-current="page"{% endif %}>{{ document.nav_title | default: document.title | escape }}</a>
+      {% endfor %}
     </nav><p class="aside-note">安装好编辑器，<br>开始写第一行代码。</p></aside>
-    <main id="content"><article>{{ content }}</article><footer><span>VS Code 安装指南</span><a href="https://github.com/LaBaFan/vscode-install-guide/edit/main/{{ page.path }}">编辑本页 ↗</a></footer></main>
+    <main id="content"><article>{{ content }}</article><footer><span>VS Code 安装指南</span><a href="https://github.com/LaBaFan/vscode-install-guide/edit/main/docs/{{ page.path }}">编辑本页 ↗</a></footer></main>
   </div>
 </body>
 </html>

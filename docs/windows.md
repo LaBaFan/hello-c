@@ -1,5 +1,8 @@
 ---
 title: Windows 安装教程
+nav_title: Windows
+description: 下载安装程序，配置命令行
+order: 2
 ---
 <p class="eyebrow">02 / WINDOWS</p>
 

@@ -1,5 +1,8 @@
 ---
 title: macOS 安装教程
+nav_title: macOS
+description: Apple 芯片与 Intel Mac
+order: 1
 ---
 <p class="eyebrow">01 / MACOS</p>
 
