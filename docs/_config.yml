@@ -1,5 +1,5 @@
 title: Hello C
-description: 从下载到第一次打开项目，macOS、Windows 与 Linux 的 VS Code 安装教程。
+description: C 程序设计基础课程的环境配置、课程资料与答疑专区。
 url: https://www.labafan.cc
 baseurl: /hello-c
 markdown: kramdown
@@ -10,4 +10,19 @@ defaults:
       layout: default
       nav: true
       order: 1000
+  - scope:
+      path: environment
+    values:
+      section: environment
+      nav: false
+  - scope:
+      path: materials
+    values:
+      section: materials
+      nav: false
+  - scope:
+      path: qa
+    values:
+      section: qa
+      nav: false
 exclude: [README.md]

@@ -1,5 +1,6 @@
 ---
 title: Linux 安装教程
+permalink: /linux.html
 nav_title: Linux
 description: Ubuntu / Debian 与其他发行版
 order: 2

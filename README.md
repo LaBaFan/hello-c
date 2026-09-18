@@ -8,20 +8,24 @@
 
 ```text
 docs/
-├── index.md          # 首页，自动列出教程
-├── macos.md          # macOS 安装教程
-├── windows.md        # Windows 安装教程
-├── linux.md          # Linux 安装教程
-├── assets/           # 样式与截图（截图放 images/）
-├── _layouts/         # 公共页面模板
-└── _config.yml       # 网站配置
+├── index.md                 # 课程首页与三个模块入口
+├── environment/             # 环境配置
+│   ├── index.md             # 自动列出本模块的教程
+│   ├── macos.md
+│   ├── linux.md
+│   └── windows.md
+├── materials/index.md       # 课程资料，待编写（TODO）
+├── qa/index.md              # 答疑专区，待编写（TODO）
+├── assets/                  # 样式、脚本与截图
+├── _layouts/                # 公共页面模板
+└── _config.yml              # 网站配置
 ```
 
-## 修改或新增教程
+## 修改或新增文档
 
-修改 `docs/` 中的 Markdown 文件并提交到 `main`，网页自动更新。页面底部「编辑本页」可直接打开对应源文件。
+修改 Markdown 文件并提交到 `main`，网页自动更新。页面底部「编辑本页」指向对应源文件。
 
-新增文档如 `docs/extensions.md`，使用下面的格式；开头的 YAML 配置区必须保留，Jekyll 才会将 Markdown 渲染成网页：
+在 `docs/environment/` 新建教程，例如 `extensions.md`，保留开头的 YAML 配置区：
 
 ```markdown
 ---
@@ -35,9 +39,17 @@ order: 4
 在这里写教程正文。
 ```
 
-新文档会自动出现在首页和侧栏，无需修改 HTML。`order` 越小越靠前，省略时默认为 1000；可用 `nav_title` 指定较短的导航名称。设置 `nav: false` 可隐藏导航入口，但页面仍公开可访问。
+环境配置模块会自动收录该目录里的文档。`order` 越小越靠前，省略时为 1000；`nav_title` 可以指定简短的列表名称。
 
-文档也可以按主题放入子目录，例如 `docs/tools/git.md`，同样会自动收录。避免在不同目录设置相同的 `permalink`。
+课程资料和答疑专区目前各保留一个 TODO 文档，直接编辑对应的 `index.md` 即可。以后新增文档时放入相应目录，并在该模块首页添加链接，例如：
+
+```markdown
+[第一周资料]({{ '/materials/week-1.html' | relative_url }})
+```
+
+侧栏显示三个模块，在模块内阅读文档时会高亮所属模块。首页通过 `module: true` 自动收录模块入口；普通文章不需要设置此字段。
+
+现有三个安装教程通过 `permalink` 保留 `/macos.html`、`/linux.html`、`/windows.html` 网址，不受源文件迁移影响。
 
 ## 插入图片与文档链接
 

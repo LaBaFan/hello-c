@@ -13,11 +13,11 @@
   <a class="skip" href="#content">跳转到正文</a>
   <header><a class="brand" href="{{ '/' | relative_url }}"><span class="mark">&lt;/&gt;</span> {{ site.title | escape }}</a><a class="repo" href="https://github.com/LaBaFan/hello-c">GitHub ↗</a></header>
   <div class="shell">
-    <aside><p class="nav-label">开始使用</p><nav aria-label="教程导航">
+    <aside><p class="nav-label">课程导航</p><nav aria-label="教程导航">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>概览</a>
       {% assign documents = site.pages | where: "nav", true | sort: "order" %}
       {% for document in documents %}
-      <a href="{{ document.url | relative_url }}" {% if page.url == document.url %}aria-current="page"{% endif %}>{{ document.nav_title | default: document.title | escape }}</a>
+      <a href="{{ document.url | relative_url }}" {% if page.url == document.url %}aria-current="page"{% elsif page.section and page.section == document.section %}aria-current="location"{% endif %}>{{ document.nav_title | default: document.title | escape }}</a>
       {% endfor %}
     </nav><p class="aside-note">安装好编辑器，<br>开始写第一行代码。</p></aside>
     <main id="content"><article>{{ content }}</article><footer><span>{{ site.title | escape }}</span><a href="https://github.com/LaBaFan/hello-c/edit/main/docs/{{ page.path }}">编辑本页 ↗</a></footer></main>

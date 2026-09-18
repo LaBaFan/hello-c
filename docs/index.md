@@ -2,23 +2,47 @@
 title: 从这里开始
 nav: false
 ---
-<p class="eyebrow">SETUP / VS CODE</p>
+<p class="eyebrow">HELLO C</p>
 
-# 你的第一步，从安装开始。
+# 写在前面
 
-<p class="intro">选择你的操作系统，跟着步骤完成下载、安装和验证，准备好自己的代码编辑器。</p>
+欢迎各位同学选择 C 程序设计基础这门课程，我们是本课程张彤彧老师班助教**刘鲍非**和**张晋恺**。
+
+本门课程主要包含数据类型与表达式、程序基本流程控制、函数及程序模块化设计、数组与结构应用、算法基础等内容。
+
+本课程的学习目标是让同学们掌握 C 语言的基本语法和编程方法，能够独立编写简单的 C 程序，并为后续的计算机科学与技术课程打下坚实的基础。
+
+## 课程分数占比：
+
+- **平时成绩，满分50分，包括：**
+    - 平时作业 **25分**，
+    - 课堂表现（学情调查、考勤、随堂小测、回答问题、课堂讨论等）**5分**
+    - 阶段性测试四次共**20分**。
+- **期末考试： 50分**
+
+## 关于学习
+
+各位同学刚从高中升入大学，可能对大学的学习方式还不太适应，心中难免有落差。在上机课和同学们交流的过程中，有很多同学都表示第一次编写代码“比较吃力”，这是很正常的现象，没有人是一开始就会编程的，我们也都是这样一步一步学过来的，一开始也和各位同学一样，对编程一窍不通，但是通过不断的练习和努力，学长们最终都掌握了编程的技能。
+
+我想说的是，编程是一项重实践的技能，各位课堂学的是理论知识，如何把理论知识变成电脑中的一行行代码，最后正确运行，这需要不断的练习和积累经验，第一周的上机课可能会比较吃力，因为这是各位第一次接触编程，但是只要各位同学坚持下去，认真完成每一次的编程作业，等到期末考试的时候，你们一定会为自己的进步感到惊讶！
+
+最后，借用翁恺老师的一句话结尾：
+
+> “学计算机一定要有一个强大的心理状态，计算机的所有东西都是人做出来的，别人能想出来的，我也一定能想出来。在计算机中，没有任何黑魔法，所有的东西只不过是我现在不知道而已。总有一天，我会把内部所有的细节都搞明白，那个人和我们一样，同样只是一个脑袋而已”。
+
+希望各位同学在学习过程中，能够积极参与讨论，有任何不懂的问题及时向助教或老师请教，毕竟老师和助教很重要的一项工作就是为了帮助同学们解决问题。
+
+希望一个学期之后，大家收获的不只是 C 语言的语法，更重要的是第一次真正体会到：
+
+**如何把自己的想法，一步一步变成一段能够运行的程序。**
+
+祝大家 C 语言学习顺利，也希望这个学期我们相处愉快！
+
+## 课程导航
 
 <div class="platforms">
-  {% assign documents = site.pages | where: "nav", true | sort: "order" %}
-  {% for document in documents %}
-  <a class="platform" href="{{ document.url | relative_url }}"><span class="number">{{ forloop.index }}</span><span><strong>{{ document.nav_title | default: document.title | escape }}</strong><small>{{ document.description | escape }}</small></span><span class="arrow" aria-hidden="true">→</span></a>
+  {% assign modules = site.pages | where: "module", true | sort: "order" %}
+  {% for module in modules %}
+  <a class="platform" href="{{ module.url | relative_url }}"><span class="number">{{ forloop.index }}</span><span><strong>{{ module.title | escape }}</strong><small>{{ module.description | escape }}</small></span><span class="arrow" aria-hidden="true">→</span></a>
   {% endfor %}
 </div>
-
-## 开始之前
-
-- 准备网络连接，从 [VS Code 官方下载页](https://code.visualstudio.com/download) 获取安装包。
-- 不确定电脑架构时，先查看系统信息，再选择对应的安装包。
-- 本教程先完成编辑器安装；编写 C/C++ 等程序时，还需要单独配置编译器。
-
-> Visual Studio Code（VS Code）和 Visual Studio 是不同的软件，请确认下载名称。
