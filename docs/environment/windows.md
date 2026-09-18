@@ -1,6 +1,7 @@
 ---
 title: Windows 安装教程
 permalink: /windows.html
+icon: windows
 nav_title: Windows
 description: 下载安装程序，配置命令行
 order: 3

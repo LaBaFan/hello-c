@@ -1,0 +1,14 @@
+{% assign entries = site.pages | where: "listing", true | where: "section", include.section | where_exp: "item", "item.module != true" | sort: "order" %}
+{% if entries.size > 0 %}
+<div class="document-list">
+  {% for entry in entries %}
+  <a class="document-link" href="{{ entry.url | relative_url }}">
+    {% include icon.html name=entry.icon class="document-icon" %}
+    <span class="document-info"><strong>{{ entry.title | escape }}</strong>{% if entry.description and entry.description != empty %}<span>{{ entry.description | escape }}</span>{% endif %}</span>
+    {% include icon.html name="arrow-right" class="link-arrow" %}
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">{% include icon.html name="file-lines" %}<p>暂无内容。</p></div>
+{% endif %}

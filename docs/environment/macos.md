@@ -1,6 +1,7 @@
 ---
 title: macOS 安装教程
 permalink: /macos.html
+icon: apple
 nav_title: macOS
 description: Apple 芯片与 Intel Mac
 order: 1

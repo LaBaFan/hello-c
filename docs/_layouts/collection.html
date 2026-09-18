@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<section class="collection-heading">
+  <a class="back-link" href="{{ '/' | relative_url }}">{% include icon.html name="arrow-left" %}<span>返回首页</span></a>
+  <h1>{% include icon.html name=page.icon %}<span>{{ page.title | escape }}</span></h1>
+</section>
+<section class="collection-content" aria-label="{{ page.title | escape }}列表">
+  {% include document-list.html section=page.section %}
+  {{ content }}
+</section>

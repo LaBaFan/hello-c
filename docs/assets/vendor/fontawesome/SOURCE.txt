@@ -1,0 +1,9 @@
+Font Awesome Free 7.3.1
+Package: @fortawesome/fontawesome-free@7.3.1
+Source: https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-7.3.1.tgz
+Project: https://fontawesome.com
+
+Selected official SVGs are combined into docs/_includes/fontawesome.svg.
+Glyph paths and viewBoxes are unchanged. Each symbol is reused through
+an inline SVG use element. No icon font, JavaScript kit, or external CDN
+is needed. Icons are licensed under CC BY 4.0; see LICENSE.txt.

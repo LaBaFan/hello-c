@@ -1,12 +1,14 @@
 ---
-title: 从这里开始
+title: 写在前面
 nav: false
+home: true
 ---
-<p class="eyebrow">HELLO C</p>
+<div class="home-layout">
+<article class="prose preface" markdown="1">
 
 # 写在前面
 
-欢迎各位同学选择 C 程序设计基础这门课程，我们是本课程张彤彧老师班助教**刘鲍非**和**张晋恺**。
+欢迎各位同学选择 C 程序设计基础这门课程，我们是本课程张彤彧老师班助教<a class="profile-link" href="https://github.com/LaBaFan" title="GitHub: @LaBaFan" aria-label="刘鲍非的 GitHub（LaBaFan）"><strong>刘鲍非</strong>{% include icon.html name="github" %}</a>和<a class="profile-link" href="https://github.com/The0xKa1" title="GitHub: @The0xKa1" aria-label="张晋恺的 GitHub（The0xKa1）"><strong>张晋恺</strong>{% include icon.html name="github" %}</a>。
 
 本门课程主要包含数据类型与表达式、程序基本流程控制、函数及程序模块化设计、数组与结构应用、算法基础等内容。
 
@@ -32,17 +34,16 @@ nav: false
 
 希望各位同学在学习过程中，能够积极参与讨论，有任何不懂的问题及时向助教或老师请教，毕竟老师和助教很重要的一项工作就是为了帮助同学们解决问题。
 
-希望一个学期之后，大家收获的不只是 C 语言的语法，更重要的是第一次真正体会到：
-
-**如何把自己的想法，一步一步变成一段能够运行的程序。**
-
 祝大家 C 语言学习顺利，也希望这个学期我们相处愉快！
 
-## 课程导航
-
-<div class="platforms">
-  {% assign modules = site.pages | where: "module", true | sort: "order" %}
-  {% for module in modules %}
-  <a class="platform" href="{{ module.url | relative_url }}"><span class="number">{{ forloop.index }}</span><span><strong>{{ module.title | escape }}</strong><small>{{ module.description | escape }}</small></span><span class="arrow" aria-hidden="true">→</span></a>
-  {% endfor %}
+</article>
+<aside class="home-sidebar">
+  <h2>课程导航</h2>
+  <nav aria-label="课程栏目">
+    {% assign modules = site.pages | where: "module", true | sort: "order" %}
+    {% for module in modules %}
+    <a href="{{ module.url | relative_url }}"><span class="module-label">{% include icon.html name=module.icon %}<span>{{ module.title | escape }}</span></span>{% include icon.html name="arrow-right" class="module-arrow" %}</a>
+    {% endfor %}
+  </nav>
+</aside>
 </div>
