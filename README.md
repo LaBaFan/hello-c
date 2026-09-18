@@ -8,22 +8,23 @@
 
 ```text
 docs/
-├── index.md                 # 课程首页与三个模块入口
+├── index.md                 # 写在前面与课程导航
 ├── environment/             # 环境配置
 │   ├── index.md             # 自动列出本模块的教程
 │   ├── macos.md
 │   ├── linux.md
 │   └── windows.md
-├── materials/index.md       # 课程资料，待编写（TODO）
-├── qa/index.md              # 答疑专区，待编写（TODO）
-├── assets/                  # 样式、脚本与截图
+├── materials/index.md       # 课程资料索引
+├── qa/index.md              # 答疑专区索引
+├── beyond/index.md          # 课外拓展索引
+├── assets/                  # 样式、脚本、字体与截图
 ├── _layouts/                # 公共页面模板
 └── _config.yml              # 网站配置
 ```
 
 ## 修改或新增文档
 
-修改 Markdown 文件并提交到 `main`，网页自动更新。页面底部「编辑本页」指向对应源文件。
+修改 Markdown 文件并提交到 `main`，网页自动更新。
 
 在 `docs/environment/` 新建教程，例如 `extensions.md`，保留开头的 YAML 配置区：
 
@@ -41,13 +42,9 @@ order: 4
 
 环境配置模块会自动收录该目录里的文档。`order` 越小越靠前，省略时为 1000；`nav_title` 可以指定简短的列表名称。
 
-课程资料和答疑专区目前各保留一个 TODO 文档，直接编辑对应的 `index.md` 即可。以后新增文档时放入相应目录，并在该模块首页添加链接，例如：
+课程资料、答疑总结和课外拓展分别放在 `docs/materials/`、`docs/qa/`、`docs/beyond/`。新增 Markdown 时保留上面的 YAML 配置区；各栏目和文档侧栏会按所在目录自动收录，不需要手动添加链接。`listing: false` 可从列表中隐藏文章，但网址仍公开可访问。
 
-```markdown
-[第一周资料]({{ '/materials/week-1.html' | relative_url }})
-```
-
-侧栏显示三个模块，在模块内阅读文档时会高亮所属模块。首页通过 `module: true` 自动收录模块入口；普通文章不需要设置此字段。
+栏目首页保留 `module: true`、`nav: true`、`collection_page: true` 和 `layout: collection`。普通文章不需要这些字段。空栏目显示「暂无内容」，添加文章后自动显示列表。
 
 现有三个安装教程通过 `permalink` 保留 `/macos.html`、`/linux.html`、`/windows.html` 网址，不受源文件迁移影响。
 
@@ -67,4 +64,34 @@ order: 4
 
 仓库 Settings → Pages → Deploy from a branch → `main` / `/docs`。
 
-提交后可在仓库 Actions 查看 `pages build and deployment`。构建成功后，运行 `python3 scripts/check_site.py` 检查已部署页面、导航和编辑链接。
+提交后可在仓库 Actions 查看 `pages build and deployment`。构建成功后，运行 `python3 scripts/check_site.py` 检查已部署页面、导航和资源链接。
+
+## 排版与字体
+
+白底、黑字，蓝色用于链接和当前导航。正文、目录、代码块及移动端使用统一样式。
+
+- 中文使用 [霞鹜文楷 LXGW WenKai](https://github.com/lxgw/LxgwWenKai) v1.522 Regular，字体在 `docs/assets/fonts/` 本地托管，附 OFL 许可证。当前内容使用轻量子集；新增文字可自动加载完整字库，不需要重建字体。
+- 英文和代码优先使用设备本地的 **Comic Sans MS**。该字体不随仓库分发；未安装时回退到霞鹜文楷或系统字体。
+- 图标使用 [Font Awesome Free](https://fontawesome.com) 7.3.1 的本地 SVG 子集，许可证保存在 `docs/assets/vendor/fontawesome/`。栏目或文档的 `icon` 字段可指定已有图标名称；未指定时显示文档图标。
+- 文档提供可展开目录；保留代码块右上角的复制按钮。禁用 JavaScript 不影响正文阅读。
+
+## 本地预览与检查
+
+安装 Jekyll 后，在仓库根目录运行：
+
+```sh
+jekyll serve --source docs --destination _site
+```
+
+打开 `http://127.0.0.1:4000/hello-c/`。检查构建结果与代码复制逻辑：
+
+```sh
+python3 scripts/check_site.py --site-dir _site
+node scripts/check_copy_code.mjs
+```
+
+也可检查本地服务器：
+
+```sh
+python3 scripts/check_site.py --base http://127.0.0.1:4000/hello-c/
+```

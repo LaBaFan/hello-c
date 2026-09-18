@@ -6,8 +6,15 @@ import { runInNewContext } from 'node:vm';
 const source = readFileSync(new URL('../docs/assets/copy-code.js', import.meta.url), 'utf8');
 for (const outcome of ['success', 'denied', 'unavailable']) {
   const elements = [];
-  const pre = { before(block) { this.wrapper = block; } };
-  const code = { parentElement: pre, textContent: '  printf("<你好> & test\\n");\nreturn 0;\n' };
+  const pre = {
+    before(block) { this.wrapper = block; },
+    setAttribute(key, value) { this[key] = value; },
+  };
+  const code = {
+    parentElement: pre,
+    textContent: '  printf("<你好> & test\\n");\nreturn 0;\n',
+    closest() { return { classList: ['language-c', 'highlighter-rouge'] }; },
+  };
   let copied;
   let reset;
   runInNewContext(source, {
@@ -44,13 +51,16 @@ for (const outcome of ['success', 'denied', 'unavailable']) {
   assert.equal(button.disabled, false);
   assert.equal(status.textContent, outcome === 'success' ? '已复制' : '复制失败，请手动选择代码复制');
   if (outcome === 'success') assert.equal(copied, code.textContent);
-  assert.equal(pre.wrapper.children[0], pre);
-  assert.equal(pre.wrapper.children[1], button);
+  const toolbar = elements.find(element => element.className === 'code-toolbar');
+  assert.equal(pre.wrapper.children[0], toolbar);
+  assert.equal(pre.wrapper.children[1], pre);
+  assert.equal(toolbar.children[2], button);
+  assert.equal(pre.tabindex, '0');
+  assert.equal(pre['aria-label'], 'C 代码');
   assert.equal(button['aria-label'], '复制代码');
   assert.ok(button.innerHTML.includes('<svg'));
-  assert.ok(!elements.some(element => element.className === 'code-toolbar'));
   reset();
   assert.equal(status.textContent, '');
-  assert.ok(button.innerHTML.includes('<rect'));
+  assert.ok(button.innerHTML.includes('#fa-copy'));
 }
 console.log('OK: exact code copied, denied/unavailable clipboard handled');

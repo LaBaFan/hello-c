@@ -1,0 +1,11 @@
+LXGW WenKai Regular v1.522
+Upstream: https://github.com/lxgw/LxgwWenKai
+Source: https://github.com/lxgw/LxgwWenKai/releases/download/v1.522/LXGWWenKai-Regular.ttf
+License: SIL Open Font License 1.1; see OFL.txt.
+
+LXGWWenKai-Regular.woff2 is the complete official Regular font converted
+from TTF to WOFF2 with fontTools. LXGWWenKai-Common.woff2 is a subset for
+characters present in this site's initial templates and documents.
+The full font remains available as an automatic fallback for future content.
+No glyph designs were changed. Comic Sans MS is resolved locally and is
+not redistributed in this repository.

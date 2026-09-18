@@ -1,5 +1,5 @@
 title: Hello C
-description: C 程序设计基础课程的环境配置、课程资料与答疑专区。
+description: C 程序设计基础课程资料。
 url: https://www.labafan.cc
 baseurl: /hello-c
 markdown: kramdown
@@ -10,6 +10,7 @@ defaults:
       layout: default
       nav: true
       order: 1000
+      listing: true
   - scope:
       path: environment
     values:
@@ -24,5 +25,10 @@ defaults:
       path: qa
     values:
       section: qa
+      nav: false
+  - scope:
+      path: beyond
+    values:
+      section: beyond
       nav: false
 exclude: [README.md]
