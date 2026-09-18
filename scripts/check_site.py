@@ -15,7 +15,7 @@ class Links(HTMLParser):
             self.hrefs.extend(value for key, value in attrs if key == 'href')
 
 
-for page in ('index', 'macos', 'windows', 'linux'):
+for page in ('index', 'macos', 'linux', 'windows'):
     with urlopen(Request(BASE + ('' if page == 'index' else page + '.html'), headers={'User-Agent': 'Mozilla/5.0'}), timeout=30) as response:
         html = response.read().decode()
     assert 'vscode-install-guide' not in html, page
@@ -24,8 +24,10 @@ for page in ('index', 'macos', 'windows', 'linux'):
     links.feed(html)
     assert '{{' not in html and '{%' not in html, page
     assert f'https://github.com/LaBaFan/hello-c/edit/main/docs/{page}.md' in links.hrefs, page
-    for name in ('macos', 'windows', 'linux'):
+    for name in ('macos', 'linux', 'windows'):
         assert f'/hello-c/{name}.html' in links.hrefs, (page, name)
+    positions = [links.hrefs.index(f'/hello-c/{name}.html') for name in ('macos', 'linux', 'windows')]
+    assert positions == sorted(positions), (page, '导航顺序错误')
     assert 'aria-current="page"' in html, page
     print(f'OK {page}')
 with urlopen(Request(BASE + 'assets/style.css', headers={'User-Agent': 'Mozilla/5.0'}), timeout=30) as response:

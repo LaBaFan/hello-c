@@ -2,48 +2,41 @@
 title: Linux 安装教程
 nav_title: Linux
 description: Ubuntu / Debian 与其他发行版
-order: 3
+order: 2
 ---
-<p class="eyebrow">03 / LINUX</p>
+<p class="eyebrow">02 / LINUX</p>
 
 # 在 Linux 上安装 VS Code
 
-根据发行版选择一种安装方式即可，不需要重复安装。
+Linux 安装 vscode 和 c 语言编译器更加简单，基本上只需要在终端中输入一条命令即可完成安装。
 
-## Ubuntu / Debian
+## 1. 安装必要的工具
 
-从 [官方下载页](https://code.visualstudio.com/download) 下载匹配电脑架构的 `.deb` 包。可以使用图形软件安装器打开，也可以在安装包所在文件夹打开终端。
+打开 Linux 的终端（通常可以使用快捷键 `Ctrl + Alt + T` 打开），然后输入以下命令来安装必要的工具和编译器：
 
-将下面的 `实际文件名.deb` 替换为下载的完整文件名：
-
-```sh
-sudo apt install ./实际文件名.deb
+```bash
+sudo apt update
 ```
 
-若安装时询问是否添加 Microsoft 软件源，可按提示选择，以便后续通过系统包管理器更新。
+然后输入你的密码（通常是锁屏密码），按下回车键。等待更新完成后，继续输入以下命令来安装编译器和其他必要的工具：
 
-## 使用 Snap
-
-如果系统已经安装并启用 Snap，可以运行：
-
-```sh
-sudo snap install --classic code
+```bash
+sudo apt install build-essential
 ```
 
-## Fedora / RHEL 及其他发行版
+然后输入
 
-前往 [官方 Linux 安装文档](https://code.visualstudio.com/docs/setup/linux)，按对应发行版的软件源和包管理器步骤安装。不要在这些系统上执行上面的 `apt` 命令。
-
-## 验证安装
-
-打开新的终端，运行：
-
-```sh
-code --version
+```bash
+gcc --version
 ```
 
-显示版本信息后，进入自己的项目文件夹并运行 `code .`。日常使用时无需用 `sudo` 启动 VS Code。
+如果能正确显示类似下边的版本号信息，则说明安装成功：
 
----
+```text
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+```
 
-参考：[VS Code 官方 Linux 安装文档](https://code.visualstudio.com/docs/setup/linux)。
+后续的安装 vscode 和必要插件的步骤与 macOS 上的安装步骤类似，请参考 [macOS 安装教程]({{ '/macos.html' | relative_url }}) 中的相关内容。
