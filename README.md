@@ -1,6 +1,6 @@
-# VS Code 安装指南
+# Hello C
 
-网站：[在线教程](https://www.labafan.cc/vscode-install-guide/) · [GitHub 仓库](https://github.com/LaBaFan/vscode-install-guide)
+网站：[在线教程](https://www.labafan.cc/hello-c/) · [GitHub 仓库](https://github.com/LaBaFan/hello-c)
 
 使用 GitHub Pages 原生 Jekyll 发布。网站源码和教程统一放在 `docs/`，根目录保留项目说明。
 

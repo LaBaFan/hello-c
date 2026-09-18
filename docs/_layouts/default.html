@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | escape }} · {{ site.title | escape }}</title>
+  <title>{% if page.url != "/" %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
   <meta name="description" content="{{ page.description | default: site.description | escape }}">
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231563e8'/%3E%3Cpath d='m12 9-7 7 7 7m8-14 7 7-7 7' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
 </head>
 <body>
   <a class="skip" href="#content">跳转到正文</a>
-  <header><a class="brand" href="{{ '/' | relative_url }}"><span class="mark">&lt;/&gt;</span> VS Code 安装指南</a><a class="repo" href="https://github.com/LaBaFan/vscode-install-guide">GitHub ↗</a></header>
+  <header><a class="brand" href="{{ '/' | relative_url }}"><span class="mark">&lt;/&gt;</span> {{ site.title | escape }}</a><a class="repo" href="https://github.com/LaBaFan/hello-c">GitHub ↗</a></header>
   <div class="shell">
     <aside><p class="nav-label">开始使用</p><nav aria-label="教程导航">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>概览</a>
@@ -19,7 +19,7 @@
       <a href="{{ document.url | relative_url }}" {% if page.url == document.url %}aria-current="page"{% endif %}>{{ document.nav_title | default: document.title | escape }}</a>
       {% endfor %}
     </nav><p class="aside-note">安装好编辑器，<br>开始写第一行代码。</p></aside>
-    <main id="content"><article>{{ content }}</article><footer><span>VS Code 安装指南</span><a href="https://github.com/LaBaFan/vscode-install-guide/edit/main/docs/{{ page.path }}">编辑本页 ↗</a></footer></main>
+    <main id="content"><article>{{ content }}</article><footer><span>{{ site.title | escape }}</span><a href="https://github.com/LaBaFan/hello-c/edit/main/docs/{{ page.path }}">编辑本页 ↗</a></footer></main>
   </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
-title: VS Code 安装指南
+title: Hello C
 description: 从下载到第一次打开项目，macOS、Windows 与 Linux 的 VS Code 安装教程。
 url: https://www.labafan.cc
-baseurl: /vscode-install-guide
+baseurl: /hello-c
 markdown: kramdown
 defaults:
   - scope:
