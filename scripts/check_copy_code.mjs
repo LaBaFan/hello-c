@@ -9,7 +9,10 @@ for (const outcome of ['success', 'denied', 'unavailable']) {
   const pre = { before(block) { this.wrapper = block; } };
   const code = { parentElement: pre, textContent: '  printf("<你好> & test\\n");\nreturn 0;\n' };
   let copied;
+  let reset;
   runInNewContext(source, {
+    setTimeout(callback) { reset = callback; return 1; },
+    clearTimeout() {},
     document: {
       querySelectorAll(selector) {
         assert.equal(selector, 'article pre > code');
@@ -41,6 +44,13 @@ for (const outcome of ['success', 'denied', 'unavailable']) {
   assert.equal(button.disabled, false);
   assert.equal(status.textContent, outcome === 'success' ? '已复制' : '复制失败，请手动选择代码复制');
   if (outcome === 'success') assert.equal(copied, code.textContent);
-  assert.equal(pre.wrapper.children[1], pre);
+  assert.equal(pre.wrapper.children[0], pre);
+  assert.equal(pre.wrapper.children[1], button);
+  assert.equal(button['aria-label'], '复制代码');
+  assert.ok(button.innerHTML.includes('<svg'));
+  assert.ok(!elements.some(element => element.className === 'code-toolbar'));
+  reset();
+  assert.equal(status.textContent, '');
+  assert.ok(button.innerHTML.includes('<rect'));
 }
 console.log('OK: exact code copied, denied/unavailable clipboard handled');
