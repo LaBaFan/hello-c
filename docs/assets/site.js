@@ -18,5 +18,9 @@ if (article && toc) {
   if (headings.length) {
     toc.querySelector('nav').append(list);
     toc.hidden = false;
+    const desktop = window.matchMedia('(min-width: 1101px)');
+    const syncToc = () => { toc.open = desktop.matches; };
+    syncToc();
+    desktop.addEventListener('change', syncToc);
   }
 }
